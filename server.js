@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 //configuring the database
 const dbConfig = require('./config/database.config');
+
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
@@ -32,6 +33,8 @@ app.get('/',(req,res,next)=>{
     res.json({"message":"Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."})
     console.log(req.body)
 });
+
+require('./app/routes/note.routes')(app);
 
 //listen for requests
 app.listen(3030,()=>{
